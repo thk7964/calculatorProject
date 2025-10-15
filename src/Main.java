@@ -37,7 +37,12 @@ public class Main {
                             System.out.println("결과 : " + (num1 * num2));
                             break;
                         case "/" :
-                            System.out.println("결과 : " + (num1 / num2));
+                            if(num2 != 0){
+                                System.out.println("결과 : " + (num1 / num2));
+                            }
+                            else {
+                                System.out.println("0으로 나눌 수 없습니다.");
+                            }
                             break;
                         default :
                             System.out.println("사칙연산이 아닙니다.");
