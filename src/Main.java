@@ -31,7 +31,7 @@ public class Main {
                             System.out.println("결과 : " + (num1 + num2));
                             break;
                         case "-" :
-                            System.out.println("결과 : " + (num1 + num2));
+                            System.out.println("결과 : " + (num1 - num2));
                             break;
                         case "*" :
                             System.out.println("결과 : " + (num1 * num2));
