@@ -12,8 +12,9 @@ public class Main {
         System.out.println("=========== 계산기 시작 ===========");
         Scanner sc = new Scanner(System.in);
         Calculator calc = new Calculator();
-        while (true) {
 
+        while (true) {
+            boolean flag = false;
             System.out.println("정수를 입력하세요(exit 입력 시 종료) : ");
             String input1 = sc.nextLine();
             //종료할지 안할지 확인
@@ -28,35 +29,41 @@ public class Main {
                 if (input2.matches("-?\\d+")) {
                     int num1 = Integer.parseInt(input1);
                     int num2 = Integer.parseInt(input2);
+                    int result = 0 ;
+                    boolean flag2 = true;
 
                     System.out.println("사칙연산을 입력하세요 (+, -, *, /) : ");
                     String c = sc.nextLine();
+                    try{
+                        switch (c) {
+                            case "+" :
+                                result=calc.sum(num1,num2);
 
-                    switch (c) {
-                        case "+" :
-                            System.out.println("결과 : " + calc.sum(num1,num2));
-                            list.add(calc.sum(num1,num2));
-                            break;
-                        case "-" :
-                            System.out.println("결과 : " + calc.sub(num1,num2));
-                            list.add(calc.sub(num1,num2));
-                            break;
-                        case "*" :
-                            System.out.println("결과 : " + calc.mul(num1,num2));
-                            list.add(calc.mul(num1,num2));
-                            break;
-                        case "/" :
-                            if(num2 != 0){
-                                System.out.println("결과 : " + calc.div(num1,num2));
-                                list.add(calc.div(num1,num2));
-                            }
-                            else {
-                                System.out.println("0으로 나눌 수 없습니다.");
-                            }
-                            break;
-                        default :
-                            System.out.println("사칙연산이 아닙니다.");
-                            break;
+                                break;
+                            case "-" :
+                                result=calc.sub(num1,num2);
+
+                                break;
+                            case "*" :
+                                result = calc.mul(num1,num2);
+
+                                break;
+                            case "/" :
+                                result = calc.div(num1,num2);
+                                break;
+                            default :
+                                System.out.println("사칙연산이 아닙니다.");
+                                flag2 = false;
+                                break;
+                        }
+                    } catch (ArithmeticException e) {
+                        System.out.println(e.getMessage());
+                        flag2 = false;
+                    }
+                    if (flag2){
+                        System.out.println("결과 : "+result);
+                        list.add(result);
+                        flag = true;
                     }
 
                 } else {
@@ -65,13 +72,14 @@ public class Main {
             } else {
                 System.out.println("정수나 exit만 입력 가능합니다.\n다시 입력하세요");
             }
-            System.out.println("기록을 확인 하시겠습니까? (Y/N)");
-            String input3 = sc.nextLine();
-            while (true) {
+            while (flag) {
+                System.out.println("기록을 확인 하시겠습니까? (Y/N)");
+                String input3 = sc.nextLine();
                 if (input3.equals("Y") || input3.equals("y")) {
                     System.out.println("=====지금까지 계산한 합계 조회=====");
                     System.out.println(list);
-                    break;
+
+
                 }
                 else if (input3.equals("N")|| input3.equals("n")) {
                     break;
@@ -83,6 +91,4 @@ public class Main {
 
         }
     }
-
-
 }

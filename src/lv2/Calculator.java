@@ -21,14 +21,14 @@ public class Calculator {
         return this.result;
     }
     public int div(int a, int b) {
+
+        if(b == 0){
+            throw new ArithmeticException("0으로 나눌 수 없습니다.");
+        }
         this.result = a / b;
         return this.result;
     }
 
-    public int getResult() {
-        return result;
-    }
-    public void setResult(int result) {
-        this.result = result;
-    }
+
+
 }
