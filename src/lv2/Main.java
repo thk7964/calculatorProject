@@ -7,6 +7,7 @@ public class Main {
 
         System.out.println("=========== 계산기 시작 ===========");
         Scanner sc = new Scanner(System.in);
+        Calculator calc = new Calculator();
         while (true) {
 
             System.out.println("정수를 입력하세요(exit 입력 시 종료) : ");
@@ -24,22 +25,22 @@ public class Main {
                     int num1 = Integer.parseInt(a);
                     int num2 = Integer.parseInt(b);
 
-                    System.out.println("사칙연산을 입력하세요 : ");
+                    System.out.println("사칙연산을 입력하세요 (+, -, *, /) : ");
                     String c = sc.nextLine();
 
                     switch (c) {
                         case "+" :
-                            System.out.println("결과 : " + (num1 + num2));
+                            System.out.println("결과 : " + calc.sum(num1,num2));
                             break;
                         case "-" :
-                            System.out.println("결과 : " + (num1 - num2));
+                            System.out.println("결과 : " + calc.sub(num1,num2));
                             break;
                         case "*" :
-                            System.out.println("결과 : " + (num1 * num2));
+                            System.out.println("결과 : " + calc.mul(num1,num2));
                             break;
                         case "/" :
                             if(num2 != 0){
-                                System.out.println("결과 : " + (num1 / num2));
+                                System.out.println("결과 : " + calc.div(num1,num2));
                             }
                             else {
                                 System.out.println("0으로 나눌 수 없습니다.");
@@ -58,4 +59,6 @@ public class Main {
             }
         }
     }
+
+
 }
