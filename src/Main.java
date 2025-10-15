@@ -7,9 +7,9 @@ public class Main {
         System.out.println("=========== 계산기 시작 ===========");
         Scanner sc = new Scanner(System.in);
         while (true) {
+
             System.out.println("정수를 입력하세요(exit 입력 시 종료) : ");
             String a = sc.nextLine();
-
             //종료할지 안할지 확인
             if (a.equals("exit")) {//입력 받은 값이 exit인지 확인
                 System.out.println("=========== 계산기 종료 ===========");
@@ -26,16 +26,22 @@ public class Main {
                     System.out.println("사칙연산을 입력하세요 : ");
                     String c = sc.nextLine();
 
-                    if (c.equals("+")) {
-                        System.out.println("결과 : " + (num1 + num2));
-                    } else if (c.equals("-")) {
-                        System.out.println("결과 : " + (num1 + num2));
-                    } else if (c.equals("*")) {
-                        System.out.println("결과 : " + (num1 * num2));
-                    } else if (c.equals("/")) {
-                        System.out.println("결과 : " + (num1 / num2));
-                    } else {
-                        System.out.println("사칙연산이 아닙니다.");
+                    switch (c) {
+                        case "+" :
+                            System.out.println("결과 : " + (num1 + num2));
+                            break;
+                        case "-" :
+                            System.out.println("결과 : " + (num1 + num2));
+                            break;
+                        case "*" :
+                            System.out.println("결과 : " + (num1 * num2));
+                            break;
+                        case "/" :
+                            System.out.println("결과 : " + (num1 / num2));
+                            break;
+                        default :
+                            System.out.println("사칙연산이 아닙니다.");
+                            break;
                     }
 
                 } else {
