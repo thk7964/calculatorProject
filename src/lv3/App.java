@@ -1,18 +1,18 @@
-package lv2;
+package lv3;
+
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
-
         //ArrayList 활용
         ArrayList<Double> list = new ArrayList<>();
 
         System.out.println("=========== 계산기 시작 ===========");
         Scanner sc = new Scanner(System.in);
         Calculator calc = new Calculator();
-
         while (true) {
 
             boolean flag = false;
@@ -86,7 +86,7 @@ public class Main {
                     System.out.println("=====지금까지 계산한 합계 조회=====");
                     System.out.println(list);
 
-                   break;
+                    break;
                 }
                 else if (input3.equals("N")|| input3.equals("n")) {
                     break;

@@ -40,7 +40,7 @@ public class Main {
                             break;
                         case "/" :
                             if(num2 != 0){
-                                System.out.println("결과 : " + (num1 / num2));
+                                System.out.println("결과 : " + (double)(num1 / num2));
                             }
                             else {
                                 System.out.println("0으로 나눌 수 없습니다.");

@@ -1,8 +1,8 @@
-package lv2;
+package lv3;
 
 public class Calculator {
-
     private double result;
+
     public Calculator(){
         this.result = 0;
     }
@@ -29,3 +29,5 @@ public class Calculator {
     }
 
 }
+
+
