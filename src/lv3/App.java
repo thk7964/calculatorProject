@@ -15,7 +15,7 @@ public class App {
         ArithmeticCalculator calc = new ArithmeticCalculator();
 
         while (true) {
-            System.out.println("계산기 시작 = 1 , 계산기 기록 = 2 , 처음 기록된 데이터 삭제 = 3 , 종료 = exit 를 입력하시오 :  ");
+            System.out.println("계산기 시작 = 1, 계산기 기록 = 2, 처음 기록된 데이터 삭제 = 3, 기준 값보다 큰지 확인 = 4, 종료 = exit 를 입력하시오 :  ");
             String ck = sc.nextLine();
             switch (ck) {
                 case "1":
@@ -25,11 +25,9 @@ public class App {
                             String input1 = sc.nextLine();
                             num1 = Double.parseDouble(input1);
 
-
                             System.out.println("정수를 입력하세요:");
                             String input2 = sc.nextLine();
                             num2 = Double.parseDouble(input2);
-
 
                             System.out.println("사칙연산을 입력하세요 (+, -, *, /) : ");
                             String input3 = sc.nextLine();
@@ -86,6 +84,18 @@ public class App {
                         }
                     }
                     break;
+                case "4":
+                    try {
+                        System.out.println("비교할 값을 입력해주세요 : ");
+                        String input4 = sc.nextLine();
+                        double someNum = Double.parseDouble(input4);
+                        calc.someMethodNum(someNum);
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("값을 잘 못 입력했습니다.");
+                        break;
+                    }
+
 
                 case "exit"://입력 받은 값이 exit인지 확인
                     System.out.println("=========== 계산기 종료 ===========");

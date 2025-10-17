@@ -1,9 +1,10 @@
 package lv3;
 
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class ArithmeticCalculator<T extends Number> {
-    private double result=0;
+    private double result = 0;
 
     //ArrayList 활용
     private final ArrayList<Double> list = new ArrayList<>();
@@ -16,19 +17,19 @@ public class ArithmeticCalculator<T extends Number> {
         switch (ch) {
             case "+":
                 this.result = num1.doubleValue() + num2.doubleValue();
-                System.out.println("값은 : "+this.result);
+                System.out.println("값은 : " + this.result);
                 list.add(this.result);
 
                 break;
             case "-":
                 this.result = num1.doubleValue() - num2.doubleValue();
-                System.out.println("값은 : "+this.result);
+                System.out.println("값은 : " + this.result);
                 list.add(this.result);
 //                flag = true;
                 break;
             case "*":
                 this.result = num1.doubleValue() * num2.doubleValue();
-                System.out.println("값은 : "+this.result);
+                System.out.println("값은 : " + this.result);
                 list.add(this.result);
 
                 break;
@@ -37,7 +38,7 @@ public class ArithmeticCalculator<T extends Number> {
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");//예외 의도 적으로 발생 시킴
                 }
                 this.result = num1.doubleValue() / num2.doubleValue();
-                System.out.println("값은 : "+this.result);
+                System.out.println("값은 : " + this.result);
                 list.add(this.result);
 
                 break;
@@ -58,6 +59,17 @@ public class ArithmeticCalculator<T extends Number> {
     public void listRemove() {
         list.remove(0);
 
+    }
+
+    public void someMethodNum(double x) {
+        if (list.isEmpty()) {
+            System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
+        } else {
+            System.out.println(x + "보다 큰 결과 값들은 :");
+            list.stream()
+                    .filter(num -> num > x)
+                    .forEach(System.out::print);
+        }
     }
 
 }
