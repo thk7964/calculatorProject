@@ -24,7 +24,7 @@ public class App {
                             String input1 = sc.nextLine();
                             num1 = Double.parseDouble(input1);
 
-                            System.out.println("정수를 입력하세요:");
+                            System.out.println("숫자를 입력하세요:");
                             String input2 = sc.nextLine();
                             num2 = Double.parseDouble(input2);
 
@@ -40,9 +40,9 @@ public class App {
                             break;
 
 
-                        } catch (NumberFormatException e) {// 잘못 입력했을 경우 예외처리
+                        } catch (NumberFormatException e) { // 잘못 입력했을 경우 예외처리
                             System.out.println("잘 못 입력했습니다.");
-                        } catch (ArithmeticException | IllegalArgumentException e) {// 잘못 입력했을 경우 예외처리
+                        } catch (ArithmeticException | IllegalArgumentException e) { // 잘못 입력했을 경우 예외처리
                             System.out.println(e.getMessage());
                         }
                     }
@@ -53,7 +53,7 @@ public class App {
                         System.out.println("기록을 확인 하시겠습니까? (Y/N)");
                         String recordinput = sc.nextLine();
                         if (recordinput.equals("Y") || recordinput.equals("y")) {
-                            if (calc.getResults().isEmpty()) {//이전에 계산한 값이 있는지 확인
+                            if (calc.getResults().isEmpty()) { //이전에 계산한 값이 있는지 확인
                                 System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
                                 break;
                             }
@@ -102,7 +102,7 @@ public class App {
                 //입력한 값과 계산된 값 비교
                 case "4":
                     try {
-                        if (calc.getResults().isEmpty()) {
+                        if (calc.getResults().isEmpty()) { //이전에 계산한 값이 있는지 확인
                             System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
                         } else {
                             System.out.println("비교할 값을 입력해주세요 : ");
@@ -110,6 +110,7 @@ public class App {
                             double someNum = Double.parseDouble(input4);
                             System.out.println(someNum + "보다 큰 결과 값들은 :");
                             calc.comparisonValue(someNum);
+                            System.out.println(" ");
                             break;
                         }
                     } catch (Exception e) {

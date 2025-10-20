@@ -23,7 +23,7 @@ public class ArithmeticCalculator<T extends Number> {
                     num1.doubleValue() * num2.doubleValue();
             case "/" -> {//나눗셈
                 if (num2.doubleValue() == 0) {
-                    throw new ArithmeticException("0으로 나눌 수 없습니다.");//예외 의도 적으로 발생 시킴
+                    throw new ArithmeticException("0으로 나눌 수 없습니다."); //예외 의도 적으로 발생 시킴
                 }
                 yield num1.doubleValue() / num2.doubleValue();
             }
@@ -50,6 +50,6 @@ public class ArithmeticCalculator<T extends Number> {
     public void comparisonValue(double x) {
             results.stream()
                     .filter(num -> num > x)
-                    .forEach(System.out::print);
+                    .forEach(num->System.out.print(num+" "));
     }
 }
