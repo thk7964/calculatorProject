@@ -21,7 +21,7 @@ public class Main {
                 System.out.println("정수를 입력하세요:");
                 String b = sc.nextLine();
 
-                if (b.matches("-?\\d+")) {
+                if (b.matches("-?\\d+")) {//숫자인지를 판별함
                     int num1 = Integer.parseInt(a);
                     int num2 = Integer.parseInt(b);
 
@@ -29,24 +29,23 @@ public class Main {
                     String c = sc.nextLine();
 
                     switch (c) {
-                        case "+" :
+                        case "+"://덧셈
                             System.out.println("결과 : " + (num1 + num2));
                             break;
-                        case "-" :
+                        case "-"://뺄셈
                             System.out.println("결과 : " + (num1 - num2));
                             break;
-                        case "*" :
+                        case "*"://곱셈
                             System.out.println("결과 : " + (num1 * num2));
                             break;
-                        case "/" :
-                            if(num2 != 0){
-                                System.out.println("결과 : " + (double)(num1 / num2));
-                            }
-                            else {
+                        case "/"://나눗셈
+                            if (num2 != 0) {//분모가 0인지 확인
+                                System.out.println("결과 : " + (double) (num1 / num2));
+                            } else {
                                 System.out.println("0으로 나눌 수 없습니다.");
                             }
                             break;
-                        default :
+                        default://잘 못 입력시 출력
                             System.out.println("사칙연산이 아닙니다.");
                             break;
                     }
