@@ -1,13 +1,11 @@
 package lv2;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class App {
+    //ArrayList 활용
 
-        //ArrayList 활용
-        ArrayList<Double> list = new ArrayList<>();
+    public static void main(String[] args) {
 
         System.out.println("=========== 계산기 시작 ===========");
         Scanner sc = new Scanner(System.in);
@@ -32,30 +30,30 @@ public class Main {
                 if (input2.matches("-?\\d+")) { //숫자인지 확인
                     int num1 = Integer.parseInt(input1);
                     int num2 = Integer.parseInt(input2);
-                    double result = 0 ;
+                    double result = 0;
                     boolean flag2 = true;
 
                     System.out.println("사칙연산을 입력하세요 (+, -, *, /) : ");
                     String c = sc.nextLine();
 
-                    try{
+                    try {
                         switch (c) {
-                            case "+" :
-                                result=calc.sum(num1,num2);
+                            case "+":
+                                result = calc.sum(num1, num2);
 
                                 break;
-                            case "-" :
-                                result=calc.sub(num1,num2);
+                            case "-":
+                                result = calc.sub(num1, num2);
 
                                 break;
-                            case "*" :
-                                result = calc.mul(num1,num2);
+                            case "*":
+                                result = calc.mul(num1, num2);
 
                                 break;
-                            case "/" :
-                                result = calc.div(num1,num2);
+                            case "/":
+                                result = calc.div(num1, num2);
                                 break;
-                            default :
+                            default:
                                 System.out.println("사칙연산이 아닙니다.");
                                 flag2 = false;
                                 break;
@@ -64,9 +62,8 @@ public class Main {
                         System.out.println(e.getMessage());
                         flag2 = false;
                     }
-                    if (flag2){//ArrayList 데이터 추가
-                        System.out.println("결과 : "+result);
-                        list.add(result);
+                    if (flag2) {//ArrayList 데이터 추가
+                        System.out.println("결과 : " + result);
                         flag = true;
                     }
 
@@ -82,16 +79,11 @@ public class Main {
                 System.out.println("기록을 확인 하시겠습니까? (Y/N)");
                 String input3 = sc.nextLine();
                 if (input3.equals("Y") || input3.equals("y")) {
-
-                    System.out.println("=====지금까지 계산한 합계 조회=====");
-                    System.out.println(list);
-
-                   break;
-                }
-                else if (input3.equals("N")|| input3.equals("n")) {
+                    calc.listView();
                     break;
-                }
-                else {
+                } else if (input3.equals("N") || input3.equals("n")) {
+                    break;
+                } else {
                     System.out.println("형식에 맞게 입력해주세요");
                 }
             }
@@ -99,16 +91,13 @@ public class Main {
                 System.out.println("처음으로 기록된 데이터를 삭제 하시겠습니까? (Y/N)");
                 String input4 = sc.nextLine();
                 if (input4.equals("Y") || input4.equals("y")) {
-                    list.remove(0);// 처음 기록된 데이터를 삭제한다.
-                    System.out.println("=====지금까지 계산한 합계 조회=====");
-                    System.out.println(list);
+                    calc.listRemove(); // 처음 기록된 데이터를 삭제한다.
+                    calc.listView();
                     break;
 
-                }
-                else if (input4.equals("N")|| input4.equals("n")) {
+                } else if (input4.equals("N") || input4.equals("n")) {
                     break;
-                }
-                else {
+                } else {
                     System.out.println("형식에 맞게 입력해주세요");
                 }
             }
