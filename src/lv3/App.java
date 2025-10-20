@@ -1,8 +1,6 @@
 package lv3;
 
-
 import java.util.*;
-
 
 public class App {
     public static void main(String[] args) {
@@ -35,7 +33,9 @@ public class App {
 
                             OperatorType op = OperatorType.fromSymbol(input3);
                             System.out.println(op.getSymbol());
-                            calc.calculator(num1, num2, op.getSymbol());
+                            double result = calc.calculat(num1, num2, op.getSymbol());
+                            calc.addResults(result);
+                            System.out.println("값은 :" + result);
                             break;
 
 
@@ -52,8 +52,15 @@ public class App {
                         System.out.println("기록을 확인 하시겠습니까? (Y/N)");
                         String recordinput = sc.nextLine();
                         if (recordinput.equals("Y") || recordinput.equals("y")) {
-                            calc.listView();
-                            break;
+                            if (calc.getResults().isEmpty()) {//이전에 계산한 값이 있는지 확인
+                                System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
+                                break;
+                            }
+                            else{
+                                System.out.println("=====지금까지 계산한 합계 조회=====");
+                                System.out.println(calc.getResults());
+                                break;
+                            }
                         } else if (recordinput.equals("N") || recordinput.equals("n")) {
                             break;
                         } else {
@@ -67,11 +74,17 @@ public class App {
                         System.out.println("처음으로 기록된 데이터를 삭제 하시겠습니까? (Y/N)");
                         String deleteinput = sc.nextLine();
                         try {
-
                             if (deleteinput.equals("Y") || deleteinput.equals("y")) {
-                                calc.listRemove(); // 처음 기록된 데이터를 삭제한다.
-                                calc.listView();
-                                break;
+                                if (calc.getResults().isEmpty()) { //이전에 계산한 값이 있는지 확인
+                                    System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
+                                    break;
+                                }
+                                else {
+                                    calc.listRemove(); // 처음 기록된 데이터를 삭제한다.
+                                    System.out.println("=====지금까지 계산한 합계 조회=====");
+                                    System.out.println(calc.getResults());
+                                    break;
+                                }
 
                             } else if (deleteinput.equals("N") || deleteinput.equals("n")) {
                                 break;
@@ -86,11 +99,16 @@ public class App {
                     break;
                 case "4":
                     try {
-                        System.out.println("비교할 값을 입력해주세요 : ");
-                        String input4 = sc.nextLine();
-                        double someNum = Double.parseDouble(input4);
-                        calc.someMethodNum(someNum);
-                        break;
+                        if (calc.getResults().isEmpty()) {
+                            System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
+                        } else {
+                            System.out.println("비교할 값을 입력해주세요 : ");
+                            String input4 = sc.nextLine();
+                            double someNum = Double.parseDouble(input4);
+                            System.out.println(someNum + "보다 큰 결과 값들은 :");
+                            calc.comparisonValue(someNum);
+                            break;
+                        }
                     } catch (Exception e) {
                         System.out.println("값을 잘 못 입력했습니다.");
                         break;

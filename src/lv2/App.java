@@ -12,7 +12,6 @@ public class App {
         Calculator calc = new Calculator();
 
         while (true) {
-
             boolean flag = false;
 
             System.out.println("정수를 입력하세요(exit 입력 시 종료) : ");
@@ -40,13 +39,12 @@ public class App {
                         switch (c) {
                             case "+":
                                 result = calc.sum(num1, num2);
-
                                 break;
                             case "-":
-                                result = calc.sub(num1, num2);
-
+                                result=calc.sub(num1, num2);
                                 break;
                             case "*":
+
                                 result = calc.mul(num1, num2);
 
                                 break;
@@ -64,6 +62,7 @@ public class App {
                     }
                     if (flag2) {//ArrayList 데이터 추가
                         System.out.println("결과 : " + result);
+                        calc.addResults(result);
                         flag = true;
                     }
 
@@ -79,7 +78,14 @@ public class App {
                 System.out.println("기록을 확인 하시겠습니까? (Y/N)");
                 String input3 = sc.nextLine();
                 if (input3.equals("Y") || input3.equals("y")) {
-                    calc.listView();
+                    if (calc.getResults().isEmpty()) {
+                        System.out.println("=====지금까지 계산한 합계 조회=====");
+                        System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
+
+                    } else {
+                        System.out.println("=====지금까지 계산한 합계 조회=====");
+                        System.out.println(calc.getResults());
+                    }
                     break;
                 } else if (input3.equals("N") || input3.equals("n")) {
                     break;
@@ -92,7 +98,8 @@ public class App {
                 String input4 = sc.nextLine();
                 if (input4.equals("Y") || input4.equals("y")) {
                     calc.listRemove(); // 처음 기록된 데이터를 삭제한다.
-                    calc.listView();
+                    System.out.println("=====지금까지 계산한 합계 조회=====");
+                    System.out.println(calc.getResults());
                     break;
 
                 } else if (input4.equals("N") || input4.equals("n")) {

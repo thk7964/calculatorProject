@@ -3,56 +3,46 @@ package lv2;
 import java.util.ArrayList;
 
 public class Calculator {
-    private static final ArrayList<Double> list = new ArrayList<>();
+    private static final ArrayList<Double> results = new ArrayList<>();
 
-    private double result;
-    public Calculator(){
-        this.result = 0;
+    public Calculator() {
+
     }
 
-    public int sum(int a, int b) {//더하기
-        this.result = a + b;
-        list.add(result);
-        return (int) this.result;
+    public double sum(int a, int b) {//더하기
+        return a + b;
     }
-    public int sub(int a, int b) {//빼기
-        this.result = a - b;
-        list.add(result);
-        return (int) this.result;
+
+    public double sub(int a, int b) {//빼기
+        return a - b;
     }
-    public int mul(int a, int b) {//곱하기
-        this.result = a * b;
-        list.add(result);
-        return (int) this.result;
+
+    public double mul(int a, int b) {//곱하기
+        return a * b;
     }
+
     public double div(int a, int b) {//나누기
-        if(b == 0){
+        if (b == 0) {
             throw new ArithmeticException("0으로 나눌 수 없습니다.");//예외 의도 적으로 발생 시킴
         }
-        this.result =(double)a / b;
-        list.add(result);
-        return this.result;
+
+        return (double) a / b;
     }
 
-    public void listView() {
-        if (list.isEmpty()) {
-            System.out.println("=====지금까지 계산한 합계 조회=====");
-            System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
-
-        } else {
-            System.out.println("=====지금까지 계산한 합계 조회=====");
-            System.out.println(list);
-        }
+    //연산 결과값 기록 세터
+    public void addResults(double result) {
+        results.add(result);
     }
 
+    //연산기록 조회 게터
+    public ArrayList<Double> getResults() {
+        return results;
+    }
+
+    //처음 저장한 결과 값 삭제
     public void listRemove() {
-        list.remove(0);
-
+        results.remove(0);
     }
 
-    public double getResult() {
-        return result;
-    }
-    public void setResult(double result) {}
 
 }

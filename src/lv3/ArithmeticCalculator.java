@@ -4,72 +4,52 @@ import java.util.*;
 
 
 public class ArithmeticCalculator<T extends Number> {
-    private double result = 0;
 
     //ArrayList 활용
-    private final ArrayList<Double> list = new ArrayList<>();
+    private final ArrayList<Double> results = new ArrayList<>();
 
     public ArithmeticCalculator() {
 
     }
 
-    public void calculator(T num1, T num2, String ch) {
-        switch (ch) {
-            case "+":
-                this.result = num1.doubleValue() + num2.doubleValue();
-                System.out.println("값은 : " + this.result);
-                list.add(this.result);
-
-                break;
-            case "-":
-                this.result = num1.doubleValue() - num2.doubleValue();
-                System.out.println("값은 : " + this.result);
-                list.add(this.result);
-//                flag = true;
-                break;
-            case "*":
-                this.result = num1.doubleValue() * num2.doubleValue();
-                System.out.println("값은 : " + this.result);
-                list.add(this.result);
-
-                break;
-            case "/":
+    //계산
+    public double calculat(T num1, T num2, String ch) {
+        return switch (ch) {
+            case "+" ->//덧셈
+                    num1.doubleValue() + num2.doubleValue();
+            case "-" ->//뺄셈
+                    num1.doubleValue() - num2.doubleValue();
+            case "*" ->//곱하기
+                    num1.doubleValue() * num2.doubleValue();
+            case "/" -> {//나누기
                 if (num2.doubleValue() == 0) {
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");//예외 의도 적으로 발생 시킴
                 }
-                this.result = num1.doubleValue() / num2.doubleValue();
-                System.out.println("값은 : " + this.result);
-                list.add(this.result);
-
-                break;
-        }
+                yield num1.doubleValue() / num2.doubleValue();
+            }
+            default -> 0;
+        };
     }
 
-    public void listView() {
-        if (list.isEmpty()) {
-            System.out.println("=====지금까지 계산한 합계 조회=====");
-            System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
-
-        } else {
-            System.out.println("=====지금까지 계산한 합계 조회=====");
-            System.out.println(list);
-        }
+    //연산 결과값 기록 세터
+    public void addResults(double result) {
+        results.add(result);
     }
 
+    //연산기록 조회 게터
+    public ArrayList<Double> getResults() {
+        return results;
+    }
+
+    //처음 저장한 결과 값 삭제
     public void listRemove() {
-        list.remove(0);
-
+        results.remove(0);
     }
 
-    public void someMethodNum(double x) {
-        if (list.isEmpty()) {
-            System.out.println("계산한 값이 없습니다. 계산 후 이용해주세요");
-        } else {
-            System.out.println(x + "보다 큰 결과 값들은 :");
-            list.stream()
+    //입력 값과
+    public void comparisonValue(double x) {
+            results.stream()
                     .filter(num -> num > x)
                     .forEach(System.out::print);
-        }
     }
-
 }
