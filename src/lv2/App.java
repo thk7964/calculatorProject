@@ -12,7 +12,7 @@ public class App {
         Calculator calc = new Calculator();
 
         while (true) {
-            boolean flag = false;
+            boolean flag = false;//삭제 및 조회 기능 컨트롤
 
             System.out.println("정수를 입력하세요(exit 입력 시 종료) : ");
             String input1 = sc.nextLine();
@@ -30,25 +30,23 @@ public class App {
                     int num1 = Integer.parseInt(input1);
                     int num2 = Integer.parseInt(input2);
                     double result = 0;
-                    boolean flag2 = true;
+                    boolean flag2 = true; //결과 값저장 기능 컨트롤
 
                     System.out.println("사칙연산을 입력하세요 (+, -, *, /) : ");
                     String c = sc.nextLine();
 
                     try {
                         switch (c) {
-                            case "+":
+                            case "+"://덧셈
                                 result = calc.sum(num1, num2);
                                 break;
-                            case "-":
+                            case "-"://뺄셈
                                 result=calc.sub(num1, num2);
                                 break;
-                            case "*":
-
+                            case "*"://곱하기
                                 result = calc.mul(num1, num2);
-
                                 break;
-                            case "/":
+                            case "/"://나누기
                                 result = calc.div(num1, num2);
                                 break;
                             default:
@@ -56,10 +54,11 @@ public class App {
                                 flag2 = false;
                                 break;
                         }
-                    } catch (ArithmeticException e) {
+                    } catch (ArithmeticException e) {// 잘못 입력했을 경우 예외처리
                         System.out.println(e.getMessage());
                         flag2 = false;
                     }
+
                     if (flag2) {//ArrayList 데이터 추가
                         System.out.println("결과 : " + result);
                         calc.addResults(result);
@@ -73,8 +72,7 @@ public class App {
                 System.out.println("정수나 exit만 입력 가능합니다.\n다시 입력하세요");
             }
 
-            while (flag) {
-
+            while (flag) {//계산을 안하면 안보이게 설정
                 System.out.println("기록을 확인 하시겠습니까? (Y/N)");
                 String input3 = sc.nextLine();
                 if (input3.equals("Y") || input3.equals("y")) {
@@ -93,7 +91,9 @@ public class App {
                     System.out.println("형식에 맞게 입력해주세요");
                 }
             }
-            while (flag) { //ArrayList 데이터 삭제
+            //계산을 안하면 안보이게 설정
+            //ArrayList 데이터 삭제
+            while (flag) {
                 System.out.println("처음으로 기록된 데이터를 삭제 하시겠습니까? (Y/N)");
                 String input4 = sc.nextLine();
                 if (input4.equals("Y") || input4.equals("y")) {

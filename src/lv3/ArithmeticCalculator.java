@@ -13,15 +13,15 @@ public class ArithmeticCalculator<T extends Number> {
     }
 
     //계산
-    public double calculat(T num1, T num2, String ch) {
+    public double calculate(T num1, T num2, String ch) {
         return switch (ch) {
             case "+" ->//덧셈
                     num1.doubleValue() + num2.doubleValue();
             case "-" ->//뺄셈
                     num1.doubleValue() - num2.doubleValue();
-            case "*" ->//곱하기
+            case "*" ->//곱셈
                     num1.doubleValue() * num2.doubleValue();
-            case "/" -> {//나누기
+            case "/" -> {//나눗셈
                 if (num2.doubleValue() == 0) {
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");//예외 의도 적으로 발생 시킴
                 }
@@ -42,7 +42,7 @@ public class ArithmeticCalculator<T extends Number> {
     }
 
     //처음 저장한 결과 값 삭제
-    public void listRemove() {
+    public void removeResult() {
         results.remove(0);
     }
 
