@@ -22,13 +22,13 @@ public class App {
                 System.out.println("=========== 계산기 종료 ===========");
                 break;
 
-            } else if (input1.matches("-?\\d+")) { //숫자인지 확인
+            } else if (input1.matches("-?\\d+(\\.\\d+)?")) { //숫자인지 확인
                 System.out.println("정수를 입력하세요:");
                 String input2 = sc.nextLine();
 
-                if (input2.matches("-?\\d+")) { //숫자인지 확인
-                    int num1 = Integer.parseInt(input1);
-                    int num2 = Integer.parseInt(input2);
+                if (input2.matches("-?\\d+(\\.\\d+)?")) { //숫자인지 확인
+                    double num1 = Double.parseDouble(input1);
+                    double num2 = Double.parseDouble(input2);
                     double result = 0;
                     boolean flag2 = true; //결과 값저장 기능 컨트롤
 

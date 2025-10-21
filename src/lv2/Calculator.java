@@ -9,24 +9,24 @@ public class Calculator {
 
     }
 
-    public double sum(int a, int b) {//더하기
+    public double sum(double a, double b) {//더하기
         return a + b;
     }
 
-    public double sub(int a, int b) {//빼기
+    public double sub(double a, double b) {//빼기
         return a - b;
     }
 
-    public double mul(int a, int b) {//곱하기
+    public double mul(double a, double b) {//곱하기
         return a * b;
     }
 
-    public double div(int a, int b) {//나누기
+    public double div(double a, double b) {//나누기
         if (b == 0) {
             throw new ArithmeticException("0으로 나눌 수 없습니다.");//예외 의도 적으로 발생 시킴
         }
 
-        return (double) a / b;
+        return  a / b;
     }
 
     //연산 결과값 기록 세터
