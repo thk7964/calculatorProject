@@ -46,7 +46,7 @@ public class ArithmeticCalculator<T extends Number> {
         results.remove(0);
     }
 
-    //입력 값과
+    //입력한 값과 계산된 값 비교 후 출력
     public void comparisonValue(double x) {
             results.stream()
                     .filter(num -> num > x)
