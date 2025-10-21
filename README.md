@@ -54,6 +54,16 @@ Lv 1-> Lv 2 ->Lv 3 순으로 점차적 기능을 확장하며 발전시킨 콘�
 ### 실행 예시
 <img width="835" height="659" alt="image" src="https://github.com/user-attachments/assets/ddeb9a35-aa1c-4bb5-94e0-bf543bb97aea" />
 
+### Trouble Shooting (LV1 ~ LV3 전부 포함된 내용)
+| 문제 상황 | 원인 | 해결 방법 |
+|-----|-----|-----|
+| 0으로 나눴을 때 프로그램이 종료됨 (lv1) | 나눗셈이 연산 시 분모가 0일 경우 'ArithmeticException' 발생 | if문으로 조건을 추가하고 예외를 발생시켜 "0으로 나눌 수 없습니다."라는 메시지를 출력하도록 수정 | 
+| 정수는 입력 가능하지만 실수는 입력 불가 (lv2) | matches()를 이용해 if문에 'input2.matches("-?\\d+")' 조건을 줘서 정수만 입력 받을 수 있게 만들었다. | input2.matches("-?\\d+(\\.\\d+)?")을 추가로 작성해서 수정, Lv3에서는   |
+| 기록 값이 없을 때 삭제 기능 실행시 오류 발생 (lv2) | 'ArrayList'가 비어 있는데 'remove(0)' 실행 -> 오류 발생 | if문으로 .isEmpty() 사용해 리스트가 비어이쓴지 확인 후 "계산한 값이 없습니다. 계산 후 이용해주세요"라는 메세지 출력 |
+| 기존에 있던 형식을 바꾸면서 잘못된 문자 입력 시 프로그램 오류 발생  (lv3) | 'NumberFormatException' 발생 | 'try-catch'문을 사용하여 예외처리 하고, "잘 못 입력했습니다."라는 메세지 출력하도록 수정  |
+| Enum 연산자 입력 시 대소문자나 공백으로 인한 오류 (lv3) | 입력 값이 '+', '-', '*', '/'중 하나가 아니면 'IllegalArgumentException' 발생 | 'throw'를 사용해 'IllegalArgumentException' 발생하면 "연산자가 잘못입력되었습니다."가 출력되게 수정 |
+
+
 ### 느낀점
 처음엔 단순하게 사칙연산 기능만 구현했지만, 
 컬렉션, Enum, 스트림, 제네릭을 사용했지만 아직 잘 이해하지는 못 한것 같다.
